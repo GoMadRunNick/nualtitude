@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NuAltitude - Turn TikTok Into Your Most Profitable Sales Channel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --bg-light: #000000;
+            --border-color: #333333;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #0ea5e9;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            background-color: var(--bg-dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: rgba(248, 250, 252, 0.1);
+        }
+        
+        .nav-link.active {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+        
+        .cta-button {
+            background: var(--accent-primary);
+            color: var(--bg-dark);
+            padding: 10px 22px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .mobile-nav-links .nav-link, .mobile-nav-links .cta-button {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            margin: 0;
+        }
+        
+        #home {
+            padding-top: 140px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background-image: radial-gradient(circle at 50% 0, rgba(56, 189, 248, 0.1), transparent 40%);
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+            color: var(--text-primary);
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: var(--bg-dark);
+            padding: 18px 48px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
+            background: var(--accent-secondary);
+        }
+        
+        #problem {
+            background-color: var(--bg-light);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .problem-item {
+            background: var(--bg-dark);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .problem-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
+            color: var(--accent-primary);
+        }
+        
+        .problem-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .advantage-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .advantage-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+        }
+
+        .advantage-icon {
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .advantage-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        #services {
+            background-color: var(--bg-light);
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            align-items: stretch;
+        }
+        
+        .tier {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        
+        .tier.featured {
+            border-color: var(--accent-primary);
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.15);
+        }
+        
+        .tier h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .tier .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .tier .tagline {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            min-height: 48px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tier ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            text-align: left;
+        }
+        
+        .tier li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .tier li svg {
+            color: var(--accent-primary);
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .tier-cta {
+            background: var(--accent-primary);
+            color: var(--bg-dark);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+            margin-top: auto;
+            border: 2px solid transparent;
+        }
+
+        .tier:not(.featured) .tier-cta {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid #ffffff;
+        }
+        
+        .tier-cta:hover {
+            transform: translateY(-2px);
+            background: var(--accent-secondary);
+            color: var(--bg-dark);
+            border-color: var(--accent-secondary);
+        }
+        
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .process-timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .process-step {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-light);
+            border: 4px solid var(--accent-primary);
+            top: 28px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .process-step.left {
+            left: 0;
+            text-align: right;
+        }
+        .process-step.right {
+            left: 50%;
+        }
+
+        .process-step.left::after {
+            left: -10px;
+        }
+
+        .process-step-content {
+            padding: 20px 30px;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            position: relative;
+            border-radius: 12px;
+        }
+        
+        .process-step-content h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        #faq { background-color: var(--bg-light); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .faq-question {
+            padding: 1.5rem 0;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+            transition: color 0.2s ease;
+            background: none;
+            border: none;
+        }
+        
+        .faq-question:hover { color: var(--accent-primary); }
+        
+        .faq-question svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding-bottom 0.4s ease;
+        }
+        
+        .faq-answer p { padding-bottom: 1.5rem; }
+
+        .final-cta { text-align: center; }
+        
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-muted);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .primary-cta, .secondary-cta {
+            padding: 16px 38px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: 2px solid transparent;
+        }
+        
+        .primary-cta {
+            background: var(--accent-primary);
+            color: var(--bg-dark);
+        }
+        
+        .primary-cta:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .secondary-cta {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        
+        .secondary-cta:hover {
+            background: var(--border-color);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: var(--bg-light);
+            color: var(--text-muted);
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        footer p { margin-bottom: 0.5rem; }
+        
+        @media (max-width: 1024px) {
+            .tiers-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tier.featured {
+                transform: scale(1);
+            }
+            .tier {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .section-title { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.1rem; }
+            
+            .process-timeline::after { left: 10px; }
+            .process-step { width: 100%; padding-left: 50px; padding-right: 0; margin-bottom: 2rem; }
+            .process-step.left, .process-step.right { left: 0; text-align: left; }
+            .process-step::after { left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="container nav-container">
+            <div class="logo">NuAltitude</div>
+            
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#problem" class="nav-link" data-section="problem">Problem</a>
+                <a href="#solution" class="nav-link" data-section="solution">Solution</a>
+                <a href="#services" class="nav-link" data-section="services">Services</a>
+                <a href="#process" class="nav-link" data-section="process">Process</a>
+                <a href="#faq" class="nav-link" data-section="faq">FAQ</a>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-nav-links">
+                <a href="#home" class="nav-link" onclick="closeMobileMenu()">Home</a>
+                <a href="#problem" class="nav-link" onclick="closeMobileMenu()">Problem</a>
+                <a href="#solution" class="nav-link" onclick="closeMobileMenu()">Solution</a>
+                <a href="#services" class="nav-link" onclick="closeMobileMenu()">Services</a>
+                <a href="#process" class="nav-link" onclick="closeMobileMenu()">Process</a>
+                <a href="#faq" class="nav-link" onclick="closeMobileMenu()">FAQ</a>
+                <a href="#contact" class="cta-button" onclick="closeMobileMenu()">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Turn TikTok Into Your Most Profitable Sales Channel</h1>
+                <p>We help enterprise brands excel on TikTok Shop with proven strategies that have generated millions in revenue. No guesswork. No wasted ad spend. Just results.</p>
+                <a href="#services" class="hero-cta">Scale Your TikTok Revenue</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Most Brands Fail on TikTok Shop</h2>
+                <p class="section-subtitle">Despite TikTok Shop's massive potential, many enterprise brands struggle to gain traction. They face common, but critical, roadblocks.</p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-item">
+                    <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.474-4.474c-.048-.58-.028-1.193.14-1.743A4.5 4.5 0 0012.45 3.054a4.5 4.5 0 00-4.474 4.474c.048.58.028 1.193-.14 1.743a4.5 4.5 0 004.474 4.474z" /></svg>
+                    <h3>Outdated Strategy</h3>
+                    <p>Applying old social media playbooks to TikTok's unique culture and algorithm leads to wasted effort and poor results.</p>
+                </div>
+                <div class="problem-item">
+                    <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-3.741 2.953a9.094 9.094 0 01-3.741-.479 3 3 0 01-4.682-2.72m3.741 2.953V11.25m3.741 2.953v-2.953m0 0a3.001 3.001 0 003.75-2.253 3.001 3.001 0 00-3.75-2.253m-3.75 2.253A3.001 3.001 0 016 11.25a3.001 3.001 0 01-3.75-2.253 3.001 3.001 0 013.75-2.253m6.25 5.036h-6.25" /></svg>
+                    <h3>Ineffective Creators</h3>
+                    <p>Partnering with creators based on follower count instead of proven sales ability results in low-impact campaigns.</p>
+                </div>
+                <div class="problem-item">
+                    <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 01-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 013.09-3.09L9 6l.813 2.846a4.5 4.5 0 013.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 01-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.572L16.5 21.75l-.398-1.178a3.375 3.375 0 00-2.455-2.456L12.75 18l1.178-.398a3.375 3.375 0 002.455-2.456L16.5 14.25l.398 1.178a3.375 3.375 0 002.455 2.456l1.178.398-1.178.398a3.375 3.375 0 00-2.455 2.456z" /></svg>
+                    <h3>Operational Overwhelm</h3>
+                    <p>The complexity of shop setup, creator management, and campaign tracking is too much for internal teams to handle alone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The NuAltitude Advantage</h2>
+                <p class="section-subtitle">We've cracked the code on TikTok Shop success. Our data-driven methodology combines proprietary frameworks with elite execution to deliver unparalleled results.</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="48" height="48"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3h4.5M15 3.75l3 3m0 0l-3 3m3-3h-9" /></svg>
+                    </div>
+                    <h3>Proven Frameworks</h3>
+                    <p>Leverage our proprietary playbooks, refined across successful brands to accelerate your growth.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="48" height="48"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
+                    </div>
+                    <h3>Elite Creator Network</h3>
+                    <p>Gain exclusive access to creators vetted for performance, who've driven millions in sales for major brands.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="48" height="48"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                    </div>
+                    <h3>Complete Solutions</h3>
+                    <p>From comprehensive DIY resources to full, white-glove management, we offer solutions for every level of involvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Path to Success</h2>
+                <p class="section-subtitle">We provide tailored solutions to meet your brand's unique needs, from foundational resources to complete, hands-off management.</p>
+            </div>
+            <div class="tiers-grid">
+                <div class="tier">
+                    <h3>Foundation Package</h3>
+                    <div class="price">$1,000</div>
+                    <p class="tagline">The complete blueprint for brands ready to execute.</p>
+                    <ul>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Complete TikTok Shop Setup Blueprint</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Viral Content Strategy Framework</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Creator Outreach Templates & Scripts</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>TikTok SEO & Optimization Guide</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Performance Tracking Dashboards</li>
+                    </ul>
+                    <a href="#contact" class="tier-cta">Schedule a Call</a>
+                </div>
+
+                <div class="tier featured">
+                    <h3>Guided Growth</h3>
+                    <div class="price">$1,000 + $299/mo</div>
+                    <p class="tagline">Expert guidance and elite creator access to accelerate growth.</p>
+                    <ul>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Everything in Foundation, plus:</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Monthly Strategy Consultations</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Exclusive Vetted Creator Network Access</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Monthly Trend & Opportunity Reports</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Direct Slack Access to Our Team</li>
+                    </ul>
+                    <a href="#contact" class="tier-cta">Schedule a Call</a>
+                </div>
+
+                <div class="tier">
+                    <h3>Full-Service Excellence</h3>
+                    <div class="price">Contact Us</div>
+                    <p class="tagline">We run everything, you collect the revenue.</p>
+                    <ul>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Full Account Setup & Optimization</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>End-to-End Content & Creator Management</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Paid Ad Campaign Management</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Real-time Performance Optimization</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Dedicated Account Manager</li>
+                    </ul>
+                    <a href="#contact" class="tier-cta">Schedule a Call</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Success Journey</h2>
+                <p class="section-subtitle">We follow a clear, four-phase process to build, launch, and scale your brand on TikTok Shop, ensuring a powerful and profitable presence.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step left">
+                    <div class="process-step-content">
+                        <h3>Phase 1: Strategy & Foundation</h3>
+                        <p>We begin with a deep dive into your brand, audience, and objectives to build a custom TikTok strategy and set up your shop for maximum impact.</p>
+                    </div>
+                </div>
+                <div class="process-step right">
+                    <div class="process-step-content">
+                        <h3>Phase 2: Content & Creator Activation</h3>
+                        <p>Our team develops high-converting content concepts and activates our elite network of creators to build authentic buzz around your products.</p>
+                    </div>
+                </div>
+                <div class="process-step left">
+                    <div class="process-step-content">
+                        <h3>Phase 3: Launch & Amplification</h3>
+                        <p>We manage the campaign launch, deploying content and running targeted ad campaigns to drive initial sales velocity and gather performance data.</p>
+                    </div>
+                </div>
+                <div class="process-step right">
+                    <div class="process-step-content">
+                        <h3>Phase 4: Optimization & Scaling</h3>
+                        <p>Using real-time analytics, we continuously optimize content, creators, and ad spend to scale your revenue and maximize your return on investment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How quickly can we expect results?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                    </button>
+                    <div class="faq-answer"><p>While results vary, most clients see initial traction within 30-60 days. Significant, scalable revenue growth typically occurs within the first 90 days of implementing our full strategy.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What makes your creator network different?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                    </button>
+                    <div class="faq-answer"><p>Our creators are not just influencers; they are proven sales drivers. We vet every partner based on historical sales data and their ability to create content that converts, ensuring your investment is tied to performance, not just vanity metrics.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do you measure success?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                    </button>
+                    <div class="faq-answer"><p>Our primary metric is your bottom line. We focus on key performance indicators (KPIs) like Total Revenue, Return on Ad Spend (ROAS), Cost Per Acquisition (CPA), and Gross Merchandise Value (GMV) to provide a clear picture of your TikTok Shop's profitability and growth.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What if TikTok's algorithm changes?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                    </button>
+                    <div class="faq-answer"><p>We stay ahead of the curve. Our team is constantly testing, learning, and maintaining direct lines of communication with TikTok's partner team. Our strategies are built on foundational principles of engaging content and data analysis, making them resilient and adaptable to any platform updates.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <h2>Ready to Dominate Your Niche on TikTok?</h2>
+            <p>Stop watching competitors capture market share. Let's build your custom strategy and turn TikTok into a revenue-generating powerhouse for your brand. We are only accepting 3 new enterprise clients this month.</p>
+            <div class="cta-buttons">
+                <a href="mailto:hello@nualtitude.com?subject=Custom TikTok Strategy Request" class="primary-cta">Get Your Custom Strategy</a>
+                <a href="mailto:hello@nualtitude.com?subject=Free TikTok Shop Audit Request" class="secondary-cta">Request a Free Audit</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 NuAltitude. All rights reserved.</p>
+            <p>Contact: hello@nualtitude.com</p>
+        </div>
+    </footer>
+
+    <script>
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let scrollY = window.pageYOffset;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                let sectionId = current.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-section') === sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const wasActive = item.classList.contains('active');
+                
+                faqItems.forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                if (!wasActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('active');
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
+
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const isClickInside = mobileMenu.contains(event.target) || menuBtn.contains(event.target);
+            if (!isClickInside && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
