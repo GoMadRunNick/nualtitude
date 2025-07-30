@@ -105,10 +105,14 @@
             text-decoration: none;
         }
         
-        .logo::after {
-            content: "↑";
-            color: var(--text-primary);
-            font-size: 1.2rem;
+        .logo svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover svg {
+            transform: translateY(-3px);
         }
         
         .nav-links {
@@ -550,23 +554,9 @@
         .faq-answer p { padding-bottom: 1.5rem; color: var(--text-secondary); }
 
         /* Final CTA Section */
-        .final-cta { text-align: center; }
-        
-        .final-cta h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-        
-        .final-cta p {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--text-muted);
+        .final-cta { 
+            text-align: center; 
+            padding: 60px 0; /* Reduced padding */
         }
         
         .primary-cta {
@@ -575,7 +565,7 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 1.1rem; /* Slightly larger font */
             border: 2px solid transparent;
             background: var(--accent-primary);
             color: var(--bg-dark);
@@ -584,6 +574,7 @@
         .primary-cta:hover {
             background: var(--accent-secondary);
             transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
         }
         
         /* Footer */
@@ -644,10 +635,6 @@
                 left: 0; 
                 right: auto;
             }
-
-            .final-cta h2 {
-                font-size: 2rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -667,7 +654,12 @@
 <body>
     <nav id="navbar">
         <div class="container nav-container">
-            <a href="#home" class="logo">NuAltitude</a>
+            <a href="#home" class="logo">
+                NuAltitude 
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+                </svg>
+            </a>
             
             <div class="nav-links">
                 <a href="#home" class="nav-link active" data-section="home">Home</a>
@@ -714,17 +706,23 @@
                 </div>
                 <div class="problems-grid">
                     <div class="problem-item">
-                        <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.474-4.474c-.048-.58-.028-1.193.14-1.743A4.5 4.5 0 0012.45 3.054a4.5 4.5 0 00-4.474 4.474c.048.58.028 1.193-.14 1.743a4.5 4.5 0 004.474 4.474z" /></svg>
+                        <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125z" />
+                        </svg>
                         <h3>Outdated Strategy</h3>
                         <p>Applying old social media playbooks to TikTok's unique culture and algorithm leads to wasted effort and poor results.</p>
                     </div>
                     <div class="problem-item">
-                        <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-3.741 2.953a9.094 9.094 0 01-3.741-.479 3 3 0 01-4.682-2.72m3.741 2.953V11.25m3.741 2.953v-2.953m0 0a3.001 3.001 0 003.75-2.253 3.001 3.001 0 00-3.75-2.253m-3.75 2.253A3.001 3.001 0 016 11.25a3.001 3.001 0 01-3.75-2.253 3.001 3.001 0 013.75-2.253m6.25 5.036h-6.25" /></svg>
+                        <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2.25a7.5 7.5 0 01-15 0" />
+                        </svg>
                         <h3>Ineffective Creators</h3>
                         <p>Partnering with creators based on follower count instead of proven sales ability results in low-impact campaigns.</p>
                     </div>
                     <div class="problem-item">
-                        <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 01-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 013.09-3.09L9 6l.813 2.846a4.5 4.5 0 013.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 01-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.572L16.5 21.75l-.398-1.178a3.375 3.375 0 00-2.455-2.456L12.75 18l1.178-.398a3.375 3.375 0 002.455-2.456L16.5 14.25l.398 1.178a3.375 3.375 0 002.455 2.456l1.178.398-1.178.398a3.375 3.375 0 00-2.455 2.456z" /></svg>
+                        <svg class="problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17L6.07 15.932m5.35 0L6.07 15.932m0 0l.447-4.861a2.652 2.652 0 012.322-2.322l4.86-1.44m-2.322 2.322l2.322-2.322m0 0l2.496-3.03M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.474-4.474c-.048-.58-.028-1.193.14-1.743A4.5 4.5 0 0012.45 3.054a4.5 4.5 0 00-4.474 4.474c.048.58.028 1.193-.14 1.743a4.5 4.5 0 004.474 4.474z" />
+                        </svg>
                         <h3>Operational Overwhelm</h3>
                         <p>The complexity of shop setup, creator management, and campaign tracking is too much for internal teams to handle alone.</p>
                     </div>
@@ -834,7 +832,7 @@
                     <div class="process-step left foundation-step">
                         <div class="process-step-content">
                             <h3>Step 3: Q&A Support</h3>
-                            <p>During your critical first 7-10 days of implementation, we provide dedicated support to answer questions and ensure smooth execution of your TikTok Shop launch.</p>
+                            <p>During your critical first 7-10 days of implementation, we provide dedicated support to answer questions and and ensure smooth execution of your TikTok Shop launch.</p>
                         </div>
                     </div>
                     <div class="process-step right guided-step">
@@ -886,11 +884,7 @@
 
         <section class="final-cta" id="contact">
             <div class="container">
-                <h2>Ready to Dominate Your Niche on TikTok?</h2>
-                <p>Stop watching competitors capture market share. Let's build your custom strategy and turn TikTok into a revenue-generating powerhouse for your brand. We are only accepting 3 new enterprise clients this month.</p>
-                <div class="cta-buttons">
-                    <a href="https://calendly.com/nu-altitude/30min" target="_blank" class="primary-cta">Schedule Your Free Strategy Call</a>
-                </div>
+                <a href="https://calendly.com/nu-altitude/30min" target="_blank" class="primary-cta">Schedule a Call</a>
             </div>
         </section>
     </main>
@@ -1004,5 +998,6 @@
     </script>
 </body>
 </html>
+
 
 
