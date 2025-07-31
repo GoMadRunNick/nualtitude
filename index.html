@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NuAltitude - Turn TikTok Into Your Most Profitable Sales Channel</title>
+    <link rel="icon" type="image/png" href="/Favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=HK+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -166,10 +167,16 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 2.2rem; /* Increased size for better touch */
+            line-height: 1; /* Helps with vertical alignment */
             cursor: pointer;
             color: var(--text-muted);
             z-index: 1001; /* Ensure it's above other nav elements */
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--text-primary);
         }
         
         .mobile-menu {
@@ -182,6 +189,7 @@
             background: var(--bg-dark);
             padding: 70px 1rem 1rem;
             overflow-y: auto;
+            z-index: 1000; /* Ensure menu is on top */
         }
         
         .mobile-menu.active {
@@ -340,7 +348,7 @@
             align-items: stretch; /* Ensures all cards stretch to the height of the tallest one */
             padding-top: 15px; /* Adds space for the featured card's transform */
         }
-            
+                
         .tier {
             background: var(--bg-dark);
             border: 1px solid var(--border-color);
@@ -350,7 +358,7 @@
             flex-direction: column; 
             transition: all 0.3s ease;
         }
-            
+                
         .tier.featured {
             border-color: var(--accent-primary);
             border-width: 2px;
@@ -364,7 +372,7 @@
             margin-bottom: 0.5rem;
             text-align: center;
         }
-            
+                
         .tier .price {
             font-size: 2.5rem;
             font-weight: 800;
@@ -372,7 +380,7 @@
             margin-bottom: 0.5rem;
             text-align: center;
         }
-            
+                
         .tier .tagline {
             color: var(--text-muted);
             margin-bottom: 2rem;
@@ -382,14 +390,14 @@
             align-items: center;
             justify-content: center;
         }
-            
+                
         .tier ul {
             list-style: none;
             margin-bottom: 2rem;
             text-align: left;
             flex-grow: 1; /* Allows the list to grow and push the button down */
         }
-            
+                
         .tier li {
             padding: 0.5rem 0;
             display: flex;
@@ -397,7 +405,7 @@
             gap: 0.75rem;
             font-size: 0.95rem;
         }
-            
+                
         .tier li svg {
             color: var(--accent-primary);
             flex-shrink: 0;
@@ -422,7 +430,7 @@
             color: var(--text-primary);
             border: 2px solid var(--text-secondary);
         }
-            
+                
         .tier-cta:hover {
             transform: translateY(-2px);
             background: var(--accent-secondary);
@@ -671,7 +679,7 @@
                 <a href="https://calendly.com/nu-altitude/30min" target="_blank" class="cta-button">Schedule a Call</a>
             </div>
             
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
         </div>
         
         <div class="mobile-menu" id="mobileMenu">
@@ -920,7 +928,7 @@
                         link.classList.add('active');
                     }
                 });
-                 // Default to home if no section is active (e.g., at the very top)
+                // Default to home if no section is active
                 if (!currentSectionId && navLinks.length > 0) {
                     navLinks[0].classList.add('active');
                 }
@@ -934,11 +942,11 @@
                     const answer = item.querySelector('.faq-answer');
                     const wasActive = item.classList.contains('active');
                     
-                    // Close all other items
+                    // Close all other items before opening the new one
                     faqItems.forEach(i => {
                         if (i !== item) {
-                            i.classList.remove('active');
-                            i.querySelector('.faq-answer').style.maxHeight = null;
+                           i.classList.remove('active');
+                           i.querySelector('.faq-answer').style.maxHeight = null;
                         }
                     });
 
@@ -961,8 +969,9 @@
             function toggleMobileMenu() {
                 const isMenuOpen = mobileMenu.classList.toggle('active');
                 mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen);
-                 // Prevent body scroll when menu is open
                 document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+                // Change the icon based on whether the menu is open or closed
+                mobileMenuBtn.innerHTML = isMenuOpen ? '&times;' : '☰';
             }
 
             function closeMobileMenu() {
@@ -970,30 +979,35 @@
                     mobileMenu.classList.remove('active');
                     mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     document.body.style.overflow = '';
+                    // Always set icon back to hamburger when closing
+                    mobileMenuBtn.innerHTML = '☰';
                 }
             }
 
             mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent the click from closing the menu immediately
+                e.stopPropagation(); // Prevent this click from being detected by the 'document' listener below
                 toggleMobileMenu();
             });
 
-            // Close menu when a link is clicked
+            // Close menu when a navigation link is clicked
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', closeMobileMenu);
             });
 
             // Close menu when clicking outside of it
             document.addEventListener('click', function(event) {
-                if (mobileMenu.classList.contains('active') && !mobileMenu.contains(event.target) && event.target !== mobileMenuBtn) {
+                // Check if the menu is open and the click is not on the menu itself OR the button
+                const isClickInsideButton = mobileMenuBtn.contains(event.target);
+                const isClickInsideMenu = mobileMenu.contains(event.target);
+
+                if (mobileMenu.classList.contains('active') && !isClickInsideMenu && !isClickInsideButton) {
                     closeMobileMenu();
                 }
             });
             
-            // Add scroll listener
+            // Add scroll and load event listeners
             window.addEventListener('scroll', updateActiveNav);
-            // Initial check on load
-            updateActiveNav();
+            updateActiveNav(); // Initial check on page load
         });
     </script>
 </body>
